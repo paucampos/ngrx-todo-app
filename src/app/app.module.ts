@@ -1,14 +1,15 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// NGRX
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoModule } from './todos/todo.module';
 import { FooterComponent } from './footer/footer.component';
-
-// NGRX
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReactiveFormsModule } from '@angular/forms';
 import { todoReducer } from './todos/todo.reducer';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { todoReducer } from './todos/todo.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     TodoModule,
     StoreModule.forRoot({ todos: todoReducer }),
     StoreDevtoolsModule.instrument({ 
