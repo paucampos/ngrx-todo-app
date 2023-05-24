@@ -25,7 +25,8 @@ import { todoReducer } from './todos/todo.reducer';
     StoreModule.forRoot({ todos: todoReducer }),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25,
-      logOnly: !isDevMode() })
+      logOnly: !isDevMode() 
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
