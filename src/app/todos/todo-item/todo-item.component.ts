@@ -11,8 +11,9 @@ import * as actions from '../todo.actions';
   styleUrls: ['./todo-item.component.scss'],
 })
 export class TodoItemComponent implements OnInit {
-  @Input() todo: Todo = new Todo('');
+  @Input() todo: Todo = new Todo('text');
   @ViewChild('inputEdit') txtEdit!: ElementRef;
+
   chkCompletado: FormControl = new FormControl();
   txtInput: FormControl = new FormControl('', Validators.required);
   editando: boolean = false;
@@ -23,10 +24,8 @@ export class TodoItemComponent implements OnInit {
     this.chkCompletado.setValue(this.todo.completado);
     this.txtInput.setValue(this.todo.texto);
 
-    this.chkCompletado.valueChanges.subscribe( valor => {
-      if (this.todo.id) {
-        this.store.dispatch(actions.toggle({ id: this.todo.id} ))
-      }
+    this.chkCompletado.valueChanges.subscribe((valor) => {
+      this.store.dispatch(actions.toggle({ id: this.todo.id }));
     });
   }
 
@@ -39,6 +38,18 @@ export class TodoItemComponent implements OnInit {
 
   endEdit() {
     this.editando = false;
-    // TODO: Guardar nuevo todo
+    if (this.txtInput.invalid) {
+      return;
+    }
+    if (this.txtInput.value === this.todo.texto) {
+      return;
+    }
+
+    this.store.dispatch(
+      actions.editar({
+        id: this.todo.id,
+        texto: this.txtInput.value,
+      })
+    );
   }
 }
