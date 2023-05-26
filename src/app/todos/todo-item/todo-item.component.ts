@@ -52,4 +52,8 @@ export class TodoItemComponent implements OnInit {
       })
     );
   }
+
+  eliminar() {
+    this.store.dispatch(actions.eliminar({ id: this.todo.id }));
+  }
 }
