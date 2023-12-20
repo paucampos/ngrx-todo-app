@@ -1,5 +1,8 @@
 <footer class="footer">
-  <span class="todo-count"><strong>{{ pendingTasks }}</strong> tareas pendientes</span>
+  <span class="todo-count"><strong>{{ pendingTasks }} </strong>
+    <span *ngIf="pendingTasks>1; else oneTask">tareas pendientes</span>
+    <ng-template #oneTask>tarea pendiente</ng-template>
+  </span>
   <ul class="filters">
     <li *ngFor="let filter of filters"
       (click)="changeFilter(filter)">

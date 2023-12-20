@@ -17,9 +17,9 @@ export class TodoFooterComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store.subscribe((state) => {
-      this.actualFilter = state.filter;
-      this.pendingTasks = state.todos
+    this.store.subscribe(({todos, filter}) => {
+      this.actualFilter = filter;
+      this.pendingTasks = todos
         .filter((todo: Todo) => !todo.completed).length;
     });
   }
