@@ -1,12 +1,12 @@
 export class Todo {
   public id: number;
-  public texto: string;
-  public completado: boolean;
+  public text: string;
+  public completed: boolean;
 
-  constructor(texto: string) {
-    this.texto = texto || 'text';
+  constructor(text: string) {
+    this.text = text || 'text';
 
     this.id = new Date().getTime();
-    this.completado = false;
+    this.completed = false;
   }
 }

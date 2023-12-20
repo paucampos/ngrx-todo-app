@@ -9,12 +9,12 @@ import { toggleAll } from '../todo.actions';
   styleUrls: ['./todo-page.component.scss'],
 })
 export class TodoPageComponent {
-  completado: boolean = false;
+  completed: boolean = false;
 
   constructor(private store: Store<AppState>) {}
 
   toggleAll() {
-    this.completado = !this.completado;
-    this.store.dispatch(toggleAll({ completado: this.completado }));
+    this.completed = !this.completed;
+    this.store.dispatch(toggleAll({ completed: this.completed }));
   }
 }

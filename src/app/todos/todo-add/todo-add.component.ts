@@ -19,7 +19,7 @@ export class TodoAddComponent {
   agregar() {
     if (this.txtInput.invalid) { return; }
 
-    this.store.dispatch(crear({ texto: this.txtInput.value}));
+    this.store.dispatch(crear({ text: this.txtInput.value}));
     this.txtInput.reset();
   }
 }

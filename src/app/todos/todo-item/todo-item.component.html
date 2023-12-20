@@ -1,8 +1,8 @@
 <!-- List items should get the class `editing` and `completed` when marked as completed -->
-<li [class.completed]="todo.completado" [class.editing]="editando">
+<li [class.completed]="todo.completed" [class.editing]="editing">
   <div class="view">
     <input class="toggle" [formControl]="chkCompletado" type="checkbox" />
-    <label (dblclick)="editar()">{{ todo.texto }}</label>
+    <label (dblclick)="editar()">{{ todo.text }}</label>
     <button class="destroy" (click)="eliminar()"></button>
   </div>
   <input

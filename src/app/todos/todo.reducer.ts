@@ -8,25 +8,25 @@ export const initialState: Todo[] = [
 
 export const todoReducer = createReducer(
   initialState,
-  on(crear, (state, { texto }) => [...state, new Todo(texto)]),
+  on(crear, (state, { text }) => [...state, new Todo(text)]),
   on(toggle, (state, { id }) => {
     // Con map crea un nuevo arreglo
     return state.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
-          completado: !todo.completado,
+          completed: !todo.completed,
         };
       } else {
         return todo;
       }
     });
   }),
-  on(editar, (state, { id, texto }) => state.map((todo) => {
+  on(editar, (state, { id, text }) => state.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
-          texto: texto,
+          text: text,
         };
       } else {
         return todo;
@@ -34,10 +34,10 @@ export const todoReducer = createReducer(
     })
   ),
   on(eliminar, (state, { id }) => state.filter((todo) => todo.id !== id)),
-  on(toggleAll, (state, { completado }) => state.map((todo) => {
+  on(toggleAll, (state, { completed }) => state.map((todo) => {
       return {
         ...todo,
-        completado,
+        completed,
       };
     }))
 );

@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const crear = createAction(
   '[TODO] Crear ToDo',
-  props<{ texto: string }>()
+  props<{ text: string }>()
 );
 
 export const toggle = createAction(
@@ -12,7 +12,7 @@ export const toggle = createAction(
 
 export const editar = createAction(
   '[TODO] Editar ToDo',
-  props<{ id: number; texto: string }>()
+  props<{ id: number; text: string }>()
 );
 
 export const eliminar = createAction(
@@ -22,5 +22,5 @@ export const eliminar = createAction(
 
 export const toggleAll = createAction(
   '[TODO] ToggleAll ToDo',
-  props<{ completado: boolean }>()
+  props<{ completed: boolean }>()
 );

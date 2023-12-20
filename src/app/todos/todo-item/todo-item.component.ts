@@ -16,39 +16,39 @@ export class TodoItemComponent implements OnInit {
 
   chkCompletado: FormControl = new FormControl();
   txtInput: FormControl = new FormControl('', Validators.required);
-  editando: boolean = false;
+  editing: boolean = false;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.chkCompletado.setValue(this.todo.completado);
-    this.txtInput.setValue(this.todo.texto);
+    this.chkCompletado.setValue(this.todo.completed);
+    this.txtInput.setValue(this.todo.text);
 
-    this.chkCompletado.valueChanges.subscribe((valor) => {
+    this.chkCompletado.valueChanges.subscribe(value => {
       this.store.dispatch(actions.toggle({ id: this.todo.id }));
     });
   }
 
   editar() {
-    this.editando = true;
+    this.editing = true;
     setTimeout(() => {
       this.txtEdit.nativeElement.select();
     }, 1);
   }
 
   endEdit() {
-    this.editando = false;
+    this.editing = false;
     if (this.txtInput.invalid) {
       return;
     }
-    if (this.txtInput.value === this.todo.texto) {
+    if (this.txtInput.value === this.todo.text) {
       return;
     }
 
     this.store.dispatch(
       actions.editar({
         id: this.todo.id,
-        texto: this.txtInput.value,
+        text: this.txtInput.value,
       })
     );
   }
