@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "pre-deploy": "ng build --output-path docs --base-href /pokeapi-angular17/"
   },
   "private": true,
   "dependencies": {
