@@ -1,6 +1,6 @@
 <footer class="footer">
   <span class="todo-count"><strong>{{ pendingTasks }} </strong>
-    <span *ngIf="pendingTasks>1; else oneTask">tareas pendientes</span>
+    <span *ngIf="pendingTasks>1 || pendingTasks==0; else oneTask">tareas pendientes</span>
     <ng-template #oneTask>tarea pendiente</ng-template>
   </span>
   <ul class="filters">
@@ -11,6 +11,5 @@
       </a>
     </li>
   </ul>
-  <!-- Hidden if no completed items are left ↓ -->
-  <button class="clear-completed">Borrar completados</button>
+  <button *ngIf="completedTasks !== 0" class="clear-completed" (click)="clearCompleted()">Limpiar completados</button>
 </footer>
